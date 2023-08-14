@@ -1,0 +1,40 @@
+/* body {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://i.natgeofe.com/n/43e1fe4f-89f7-49e8-9d77-2ab6f9156330/hog-sculpture-burning-man-black-rock-desert-nevada_3x2.jpg');
+    background-size: cover; /* Adjust background image sizing */
+    /* background-repeat: no-repeat; /* Prevent image from repeating */
+   */ */
+  
+
+.outerFormBox {
+    display: flex;
+    border: 1px solid salmon;
+    margin-top: 15%;
+    margin-left: 40%;
+    width: 300px;
+    justify-content: center;
+
+}
+
+.signInButton {
+   
+    border: 1px solid black;
+    width: 10vw;
+    border-radius: 5px;
+    color: aliceblue;
+    background-color: rgb(53, 144, 213);
+}
+
+.signInBox {
+    padding-left: 10px;
+    padding-top: 10px;
+    height: 30vh;
+    width: 20vw;
+    align-items: cent;
+    flex-direction: column;
+    display:flex;
+    /* background-color: beige; */
+
+
+}

@@ -7,6 +7,11 @@ import App from './App';
 import { restoreSession } from './utils/authUtils';
 import { deleteSession, postSession, postUser } from './utils/sessionApiUtils';
 import { createUser, loginUser, logoutUser } from './store/usersReducer';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import SignInForm from './components/SignInForm/SignInForm';
+import SignUpForm from './components/SignUpForm/SignUpForm';
+
+
 
 const currentUser = sessionStorage.getItem('currentUser')
 const csrfToken = sessionStorage.getItem('csrfToken')
@@ -34,7 +39,13 @@ const renderApp = () => {
   root.render (
     <React.StrictMode>
        <Provider store={store}> 
-        <App />
+        <BrowserRouter>  
+          <Routes>
+            <Route path="/" Component={App}/>
+            <Route path="/signin" Component={SignInForm}/>
+            <Route path="/signup" Component={SignUpForm}/>
+          </Routes>
+        </BrowserRouter>
        </Provider> 
   </React.StrictMode>
   )

@@ -1,0 +1,39 @@
+.screenBox {
+    
+    margin-top: 0;
+    margin-left: 0;
+    box-sizing: border-box;
+    
+}
+.signUpForm {
+   width:"30vw";
+    justify-content: "center";
+}
+
+.formFields {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    /* align-items: center; */
+    /* padding-bottom: 10px; */
+    margin-bottom: 10px;
+    
+
+}
+
+
+
+.form {
+    position: relative;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    border: 1px solid black;
+    display: inline-block;
+    margin-top: 15%;
+    margin-left: 40%;
+}
+
+.signUpButton {
+    background-color: rgb(53, 144, 213);
+    color: aliceblue;
+}

@@ -15,7 +15,7 @@ export const restoreSession = async () => {
   }
   
 
-  // this s a helper method to DRY up code
+  // this s a helper method to DRY up code for headers 
   export const csrfFetch = async (url, options = {}) => {
     options.method ||= 'GET'
     options.headers ||= {}

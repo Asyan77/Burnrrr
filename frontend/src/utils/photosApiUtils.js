@@ -1,5 +1,3 @@
-// a
-
 import { csrfFetch } from "./authUtils"
 
 export const fetchAllPhotos= () => (

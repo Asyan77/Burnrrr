@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Provider } from 'react-redux';
+import {Provider } from 'react-redux';
 import configureStore from './store/store';
 import './index.css';
 import App from './App';
@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 
 let initialState = {}
 const currentUserData = JSON.parse(currentUser)
-
+console.log(currentUserData);
 if (currentUserData) {
   initialState = {
     entities: {
@@ -30,13 +30,10 @@ if (currentUserData) {
 
 const store = configureStore(initialState)
 
-
-
-
 const renderApp = () => {
   root.render (
     <React.StrictMode>
-       <Provider store= {store}> 
+       <Provider store={store}> 
         <App />
        </Provider> 
   </React.StrictMode>

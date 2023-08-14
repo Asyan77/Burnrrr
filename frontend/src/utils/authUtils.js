@@ -14,6 +14,8 @@ export const restoreSession = async () => {
     }
   }
   
+
+  // this s a helper method to DRY up code
   export const csrfFetch = async (url, options = {}) => {
     options.method ||= 'GET'
     options.headers ||= {}

@@ -1,6 +1,6 @@
-import { legacy_createStore, combineReducers, applyMiddleware } from 'redux';
+import { combineReducers, applyMiddleware, createStore } from 'redux';
 import entitiesReducer from './entitiesReducer';
-import sessionReducer from './sessionReducer';
+import sessionsReducer from './sessionsReducer';
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 
@@ -8,7 +8,7 @@ const dummyReducer = (state = {}, action) => state
 
 const rootReducer = combineReducers({
   entities: entitiesReducer,
-  session: sessionReducer,
+  session: sessionsReducer,
   ui: dummyReducer
 })
 
@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
 // }
 
 const configureStore = (preloadedState = {}) => (
-  legacy_createStore(
+  createStore(
     rootReducer, 
     preloadedState, 
     applyMiddleware(thunk, logger)

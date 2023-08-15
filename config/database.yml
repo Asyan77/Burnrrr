@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: Burnr_production
-  username: Burnr
-  password: <%= ENV["BURNR_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>

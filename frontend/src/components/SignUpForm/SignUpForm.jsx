@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useDispatch } from 'react-redux';
 import './SignUpForm.css'
+import { createUser } from '../../store/usersReducer';
+
 
 function SignUpForm() {
+  const dispatch = useDispatch();
   const [playaName, setPlayaName] = useState('');
   const [age, setAge] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const userData = [playaName, age, email, password]
 
   const handlePlayaNameChange = (event) => {
     setPlayaName(event.target.value);
@@ -25,6 +29,7 @@ function SignUpForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch(createUser(userData))
 
   };
 

@@ -6,46 +6,32 @@ import './index.css';
 import App from './App';
 import { restoreSession } from './utils/authUtils';
 import { deleteSession, postSession, postUser } from './utils/sessionApiUtils';
-import { createUser, loginUser, logoutUser } from './store/usersReducer';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
-import SignInForm from './components/SignInForm/SignInForm';
-import SignUpForm from './components/SignUpForm/SignUpForm';
+import { createUser, loginUser, logoutUser } from './store/sessionsReducer';
 
-
-
-const currentUser = sessionStorage.getItem('currentUser')
+let currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
 const csrfToken = sessionStorage.getItem('csrfToken')
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
-let initialState = {}
-const currentUserData = JSON.parse(currentUser)
-console.log(currentUserData);
-if (currentUserData) {
-  initialState = {
-    entities: {
-      users: {
-        [currentUserData.id]: currentUserData
-      }
-    },
-    session: {
-      currentUser: currentUserData.id
-    }
-  }
-}
 
-const store = configureStore(initialState)
 
 const renderApp = () => {
+  currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
+  let initialState = {session: {currentUser}}
+  const store = configureStore(initialState)
+  
+  // for testing only
+  window.store = store
+  window.postUser = postUser
+  window.postSession = postSession
+  window.deleteSession = deleteSession
+  window.loginUser = loginUser
+  window.logoutUser = logoutUser
+  window.createUser = createUser
+  //
   root.render (
     <React.StrictMode>
        <Provider store={store}> 
-        <BrowserRouter>  
-          <Routes>
-            <Route path="/" Component={App}/>
-            <Route path="/signin" Component={SignInForm}/>
-            <Route path="/signup" Component={SignUpForm}/>
-          </Routes>
-        </BrowserRouter>
+          <App />
        </Provider> 
   </React.StrictMode>
   )
@@ -56,19 +42,3 @@ if (!currentUser || !csrfToken) {
 } else {
   renderApp()
 }
-
-
-// for testing only
-window.store = store
-// window.receiveTea = receiveTea
-// window.receiveTeas = receiveTeas
-// window.removeTea = removeTea
-// window.TeaApiUtils = TeaApiUtils
-// window.fetchTeas = fetchTeas
-window.postUser = postUser
-window.postSession = postSession
-window.deleteSession = deleteSession
-window.loginUser = loginUser
-window.logoutUser = logoutUser
-window.createUser = createUser
-//

@@ -1,20 +1,29 @@
 import React from 'react';
 // import Splash from './components/Splash/Splash';
-import { Link, Route, Switch, Routes } from 'react-router-dom';
+import { Link, Route, Switch, Routes, BrowserRouter } from 'react-router-dom';
 import SignInForm from './components/SignInForm/SignInForm';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import NavBar from './components/NavBar/NavBar';
 
-// const handleSignInClick = (e) => {
-// e.preventDefault();
-// }
-
-
 function App() {
+
+  // const [loaded, setLoaded] = useState(false);
+  // const dispatch = useDispatch();
+
+
+  // if (!loaded) {
+  //   return null;
+  // }
+
   return (
     <>
-      {/* <h1>Burnr!</h1> */}
-      <NavBar />
+       <BrowserRouter>  
+        <NavBar />
+          <Routes>
+            <Route path="/signin" Component={SignInForm}/>
+            <Route path="/signup" Component={SignUpForm}/>
+          </Routes>
+        </BrowserRouter>
     </>
   );
 }

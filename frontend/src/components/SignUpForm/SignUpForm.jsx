@@ -1,22 +1,21 @@
-import React, { useState, useDispatch } from 'react-redux';
 import './SignUpForm.css'
-import { createUser } from '../../store/usersReducer';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector} from 'react-redux';
+import { loginUser, createUser } from '../../store/sessionsReducer';
 
 
 function SignUpForm() {
   const dispatch = useDispatch();
   const [playaName, setPlayaName] = useState('');
-  const [age, setAge] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const userData = [playaName, age, email, password]
+  const userData = [playaName, email, password]
+  const user = useSelector(state => state.session.currentUser);
+  const navigate = useNavigate();
 
   const handlePlayaNameChange = (event) => {
     setPlayaName(event.target.value);
-  };
-
-  const handleAgeChange = (event) => {
-    setAge(event.target.value);
   };
 
   const handleEmailChange = (event) => {
@@ -29,39 +28,48 @@ function SignUpForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(createUser(userData))
+    const [username, age, email, password] = userData
+    const newUser = { username: playaName, email: email, password: password }
+    dispatch(createUser(newUser))
+  }
 
-  };
+  const demoUser = async (e) => {
+    e.preventDefault()
+
+    const demoEmail = 'zach@mail.com'
+    const demoPassword = 'zachword'
+
+    return await dispatch(loginUser({email: demoEmail, password: demoPassword}))
+  }
+  useEffect (()=> {
+    if(user) {
+      navigate(`/users/${user.id}`)
+    }
+  },[user])
 
   return (
-    <div className='screenBox'>
+    <div className='screen-box'>
 
-        <div className='signUpForm'>
+        <div className='sign-up-form'>
             <form className='form' onSubmit={handleSubmit}>
                 <img src="https://identity.flickr.com/img/flickr_logo_dots.7670d27a.svg" alt='flickr logo' />
                 <h2>Sign Up</h2>
-                <div className='formFields'>
+                <div className='form-fields'>
                     <div>
-                        {/* <label htmlFor="playaName">Playa Name: */}
-                             <input type="text" id="playaName" value={playaName} placeholder='Playa Name' onChange={handlePlayaNameChange} required/>
-                        {/* </label> */}
+                        <input type="text" id="playaName" value={playaName} placeholder='Playa Name' onChange={handlePlayaNameChange} required={true}/>
                     </div>
                     <div>
-                        {/* <label htmlFor="age">Age: */}
-                             <input type="number" id="age" value={age} placeholder='Age' onChange={handleAgeChange} required/>
-                        {/* </label> */}
+                        <input type="email" value={email} placeholder='Email' onChange={handleEmailChange} required={true}/>
                     </div>
                     <div>
-                        {/* <label htmlFor="email">Email: */}
-                             <input type="email" value={email} placeholder='Email' onChange={handleEmailChange} required/>
-                        {/* </label> */}
+                        <input type="password" id="password" value={password} placeholder='Password' onChange={handlePasswordChange} required ={true} />
                     </div>
-                    <div>
-                        {/* <label htmlFor="password">Password: */}
-                            <input type="password" id="password" value={password} placeholder='Password' onChange={handlePasswordChange} required />
-                        {/* </label> */}
+                    <div className='btns-bottom-of-form'>
+                       <button disabled className='sign-up-btn' type='submit'>Sign Up</button>
+                       <button className='demo-sign-up-btn' onClick={event => demoUser(event)}>Demo User</button>
+                      
+                       <div className='already-a-member-sign-up'> Already a Burnr member? <Link to='/login' style={{ textDecoration: 'none', color: 'rgb(0,130,199)' }}>Log in here.</Link></div>
                     </div>
-                    <button className='signUpButton' type="submit">Sign Up</button>
                 </div>
              </form>
         </div>

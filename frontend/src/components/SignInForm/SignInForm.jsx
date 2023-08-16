@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
 import './SignInForm.css'
-import { csrfFetch } from '../../utils/authUtils';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../store/sessionsReducer';
+import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
+
+
 
 function SignInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch()
+  const currentUser = useSelector(state => state.session.currentUser)
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -16,17 +24,23 @@ function SignInForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add logic here to handle form submission, such as sending data to a server
-    csrfFetch("http://localhost:5000/api/session", {
-      method: "POST",
-      body: JSON.stringify({
-      email: email,
-      password: password
-      })
-    })
-    console.log('Email:', email);
-    console.log('Password:', password);
+    dispatch(loginUser({email: email, password: password}))
   };
+
+  const demoUser = async (e) => {
+    e.preventDefault()
+
+    const demoEmail = 'zach@mail.com'
+    const demoPassword = 'zachword'
+
+    return await dispatch(loginUser({email: demoEmail, password: demoPassword}))
+  }
+  
+  useEffect (()=> {
+    if(currentUser) {
+      navigate(`/users/${currentUser.id}`)
+    }
+  },[currentUser])
 
   return (
     <div className='outerFormBox'>
@@ -34,17 +48,20 @@ function SignInForm() {
       <div className="signInBox">
         <img src="https://identity.flickr.com/img/flickr_logo_dots.7670d27a.svg" alt='flickr logo' />
 
-        <h2>Sign In</h2>
+        <h2>Log In to Burnr</h2>
         <form onSubmit={handleSubmit}>
           <div>
-            {/* <label htmlFor="email">Email:</label> */}
             <input type="text" id="email" value={email} placeholder='Email' onChange={handleEmailChange} required/>
           </div>
           <div>
-            {/* <label htmlFor="password">Password:</label> */}
             <input type="password" id="password" value={password} placeholder='Password' onChange={handlePasswordChange} required/>
           </div>
-          <button className='signInButton' type="submit">Sign In</button>
+          <div className='btns-bottom-of-form'>
+            <button className='signInButton' type="submit">Sign In</button>
+            <button className='demo-sign-up-btn' onClick={event => demoUser(event)}>Demo User</button>
+          <div className='sign-up-form-gray-line-before-already-member' />
+            <div className='already-a-member-sign-up'> Not a Burnr member? <Link to='/signup' style={{ textDecoration: 'none', color: 'rgb(0,130,199)' }}>Sign up here.</Link></div>       
+          </div>
         </form>
       </div>
     </div>

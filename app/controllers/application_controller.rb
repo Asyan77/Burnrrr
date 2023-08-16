@@ -7,7 +7,7 @@ class ApplicationController < ActionController::API
 
 
     def current_user
-        @current_user ||= User.find_by(session_token: session[session:token])
+        @current_user ||= User.find_by(session_token: session[:session_token])
     end
 
     def require_logged_in

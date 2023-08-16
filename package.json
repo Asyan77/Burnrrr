@@ -1,0 +1,28 @@
+{
+  "name": "burnr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asyan77/Burnr.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Asyan77/Burnr/issues"
+  },
+  "homepage": "https://github.com/Asyan77/Burnr#readme",
+  "engines": {
+    "node": "16.x"
+  }
+
+}

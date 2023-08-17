@@ -44,27 +44,24 @@ function SignInForm() {
 
   return (
     <div className='outerFormBox'>
-
-      <div className="signInBox">
+      <div className="sign-in-box">
         <img src="https://identity.flickr.com/img/flickr_logo_dots.7670d27a.svg" alt='flickr logo' />
-
         <h2>Log In to Burnr</h2>
         <form onSubmit={handleSubmit}>
-          <div>
-            <input type="text" id="email" value={email} placeholder='Email' onChange={handleEmailChange} required/>
-          </div>
-          <div>
-            <input type="password" id="password" value={password} placeholder='Password' onChange={handlePasswordChange} required/>
+          <div className='form-fields'>
+            <input className='email-btn' type="text" id="email" value={email} placeholder='Email' onChange={handleEmailChange} required/>
+            <input className='password-btn' type="password" id="password" value={password} placeholder='Password' onChange={handlePasswordChange} required/>
           </div>
           <div className='btns-bottom-of-form'>
-            <button className='signInButton' type="submit">Sign In</button>
-            <button className='demo-sign-up-btn' onClick={event => demoUser(event)}>Demo User</button>
-          <div className='sign-up-form-gray-line-before-already-member' />
-            <div className='already-a-member-sign-up'> Not a Burnr member? <Link to='/signup' style={{ textDecoration: 'none', color: 'rgb(0,130,199)' }}>Sign up here.</Link></div>       
-          </div>
+              <button className='sign-in-btn' type="submit">Sign In</button>
+                <br></br>
+              <button className='demo-sign-up-btn' onClick={event => demoUser(event)}>Demo User</button>
+            <div className='gray-line' />
+              <div className='already-a-member-sign-up'> Not a Burnr member? <Link to='/signup' style={{ textDecoration: 'none', color: 'rgb(0,130,199)' }}>Sign up here.</Link></div>       
+           </div>
         </form>
       </div>
-    </div>
+   </div>
   );
 }
 

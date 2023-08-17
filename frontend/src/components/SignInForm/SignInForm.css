@@ -2,35 +2,72 @@
 .outerFormBox {
     display: flex;
     border: 1px solid salmon;
-    margin-top: 15%;
+    margin-top: 9%;
     margin-left: 40%;
-    width: 300px;
+    width: 260px;
+    height: 40vh;
     justify-content: center;
     background-color: white;
     font-size: 10px;
     align-items: center;
-
+    padding: 4px;
+    border-radius: 5px;
+ 
+    /* box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); */
 }
 
-.signInButton {
-   
+.sign-in-box {
+    padding-left: 55px;
+    padding-top: 20px;
+    height: 35vh;
+    width: 20vw;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display:flex;
+    background-color: beige;
+    /* text-align: center; */
+    
+}
+
+/* .form-fields {
+display: flex;
+
+height: 48px;
+border: purple solid 2px;
+padding-top: 10px;
+} */
+
+.email-btn,
+.password-btn {
+padding-top: 20px;
+margin-top: 10px;
+}
+
+.sign-in-btn,
+.demo-sign-up-btn,
+.already-a-member-sign-up {
+  margin-top: 10px; /* Adjust this value as needed */
+}
+
+.sign-in-btn {
     border: 1px solid black;
-    width: 10vw;
+    width: 12vw;
+    height: 4vh;
     border-radius: 5px;
     color: aliceblue;
     background-color: rgb(53, 144, 213);
     border-radius: 3px;
 }
 
-.signInBox {
-    padding-left: 10px;
-    padding-top: 10px;
-    height: 30vh;
-    width: 20vw;
-    align-items: cent;
-    flex-direction: column;
-    display:flex;
-    /* background-color: beige; */
-
+.demo-sign-up-btn {
+    border: 1px solid black;
+    width: 12vw;
+    height: 4vh;
+    border-radius: 5px;
+    padding-top: 3px;
+    color: aliceblue;
+    background-color: rgb(53, 144, 213);
+    border-radius: 3px;
 
 }

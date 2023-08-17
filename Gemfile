@@ -20,6 +20,7 @@ gem "puma", "~> 5.0"
 
 gem "bcrypt"
 gem "jbuilder"
+gem 'aws-sdk-s3'
 
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]

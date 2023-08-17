@@ -13,6 +13,7 @@ function SignInForm() {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.session.currentUser)
   const navigate = useNavigate();
+  let burnrLogoBike = "assets/logos/burnrLogoBike.png"
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -45,9 +46,9 @@ function SignInForm() {
   return (
     <div className='outerFormBox'>
       <div className="sign-in-box">
-        <img src="https://identity.flickr.com/img/flickr_logo_dots.7670d27a.svg" alt='flickr logo' />
-        <h2>Log In to Burnr</h2>
         <form onSubmit={handleSubmit}>
+          <img src={burnrLogoBike} className='form-logo' alt='burnr-logo'/>
+          <h2>Log In to Burnr</h2>
           <div className='form-fields'>
             <input className='email-btn' type="text" id="email" value={email} placeholder='Email' onChange={handleEmailChange} required/>
             <input className='password-btn' type="password" id="password" value={password} placeholder='Password' onChange={handlePasswordChange} required/>

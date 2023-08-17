@@ -13,6 +13,7 @@ function SignUpForm() {
   const userData = [playaName, email, password]
   const user = useSelector(state => state.session.currentUser);
   const navigate = useNavigate();
+  let burnrLogoBike = "assets/logos/burnrLogoBike.png"
 
   const handlePlayaNameChange = (event) => {
     setPlayaName(event.target.value);
@@ -48,30 +49,23 @@ function SignUpForm() {
   },[user])
 
   return (
-    <div className='screen-box'>
-
+    <div className='outer-form-box'>
         <div className='sign-up-form'>
-            <form className='form' onSubmit={handleSubmit}>
-                <img src="https://identity.flickr.com/img/flickr_logo_dots.7670d27a.svg" alt='flickr logo' />
-                <h2>Sign Up</h2>
+            <form onSubmit={handleSubmit}>
+                <img src={burnrLogoBike} className='form-logo' alt='burnr-logo'/>
+                <h2>Sign Up for Burnr</h2>
                 <div className='form-fields'>
-                    <div>
-                        <input type="text" id="playaName" value={playaName} placeholder='Playa Name' onChange={handlePlayaNameChange} required={true}/>
-                    </div>
-                    <div>
-                        <input type="email" value={email} placeholder='Email' onChange={handleEmailChange} required={true}/>
-                    </div>
-                    <div>
-                        <input type="password" id="password" value={password} placeholder='Password' onChange={handlePasswordChange} required ={true} />
-                    </div>
-                    <div className='btns-bottom-of-form'>
-                       <button disabled className='sign-up-btn' type='submit'>Sign Up</button>
-                       <button className='demo-sign-up-btn' onClick={event => demoUser(event)}>Demo User</button>
-                      
-                       <div className='already-a-member-sign-up'> Already a Burnr member? <Link to='/login' style={{ textDecoration: 'none', color: 'rgb(0,130,199)' }}>Log in here.</Link></div>
-                    </div>
+                  <input className='playaname-field' type="text" id="playaName" value={playaName} placeholder='Playa Name' onChange={handlePlayaNameChange} required={true}/>
+                  <input className='email-field' type="email" value={email} placeholder='Email' onChange={handleEmailChange} required={true}/>
+                  <input className='password-field' type="password" id="password" value={password} placeholder='Password' onChange={handlePasswordChange} required ={true} />
                 </div>
-             </form>
+                <div className='btns-bottom-of-form'>
+                  <button className='sign-up-btn' type='submit' onClick={event => demoUser(event)}>Sign Up</button>
+                  <br></br>
+                  <button className='demo-sign-up-btn' onClick={event => demoUser(event)}>Demo User</button>                     
+                  <div className='already-a-member-sign-up'> Already a Burnr member? <Link to='/login' style={{ textDecoration: 'none', color: 'rgb(0,130,199)' }}>Log in here.</Link></div>
+                </div>
+            </form>
         </div>
     </div>
   );

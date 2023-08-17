@@ -1,38 +1,47 @@
 
 .outerFormBox {
-    display: flex;
-    border: 1px solid salmon;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* border: 4px solid salmon; */
     margin-top: 9%;
-    margin-left: 40%;
-    width: 260px;
-    height: 40vh;
-    justify-content: center;
-    background-color: white;
+    margin-left: 37%;
+    margin-right: 33%;
     font-size: 10px;
-    align-items: center;
-    padding: 4px;
-    border-radius: 5px;
- 
+    /* width: 260px; */
+    /* height: 40vh; */
+    /* background-color: rgb(235, 30, 132); */
+    /* padding: 4px; */
+    /* border-radius: 5px; */
     /* box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); */
 }
 
 .sign-in-box {
-    padding-left: 55px;
+    padding-left: 5px;
     padding-top: 20px;
-    height: 35vh;
-    width: 20vw;
+    height: 53vh;
+    width: 25vw;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     flex-direction: column;
     display:flex;
-    background-color: beige;
+    background-color: rgb(10, 9, 10, .85);
+    color: white;
     /* text-align: center; */
     
 }
 
+.form-logo {
+    width: 90px;
+    padding-bottom: 10px;
+    margin-left: 45px;
+}
+
+h2 {
+    margin-left: 35px;
+}
 /* .form-fields {
 display: flex;
-
 height: 48px;
 border: purple solid 2px;
 padding-top: 10px;
@@ -52,8 +61,8 @@ margin-top: 10px;
 
 .sign-in-btn {
     border: 1px solid black;
-    width: 12vw;
-    height: 4vh;
+    width: 16vw;
+    height: 6vh;
     border-radius: 5px;
     color: aliceblue;
     background-color: rgb(53, 144, 213);
@@ -62,12 +71,16 @@ margin-top: 10px;
 
 .demo-sign-up-btn {
     border: 1px solid black;
-    width: 12vw;
-    height: 4vh;
+    width: 16vw;
+    height: 6vh;
     border-radius: 5px;
     padding-top: 3px;
     color: aliceblue;
     background-color: rgb(53, 144, 213);
     border-radius: 3px;
 
+}
+.already-a-member-sign-up {
+    color: rgb(235, 30, 132);
+    margin-left: 14px;
 }

@@ -16,10 +16,8 @@
     background-color: rgba(10, 10, 10, 0.25);
   }
   
-  /* Logo styles */
-  .logo img {
-    max-width: 100px;
-    height: auto;
+  .logo-navbar {
+    width: 120px;
   }
   
   /* Navigation links styles */

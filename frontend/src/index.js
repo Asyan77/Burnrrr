@@ -14,6 +14,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 
 
 
+
 const renderApp = () => {
   currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
   let initialState = {session: {currentUser}}

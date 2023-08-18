@@ -1,3 +1,6 @@
-json.array! @posts do |post|
-    json.partial! 'api/posts/post', post: post
-  end
+ @photos.each do |photo|
+
+    json.set! photo.id do
+      json.partial! 'photo', photo: photo
+    end 
+end

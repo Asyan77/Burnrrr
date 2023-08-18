@@ -1,2 +1,4 @@
-json.extract! post, :id, :title
-json.photoUrl post.photo.attached? ? post.photo.url : nil
+# this show returns a single photo
+
+json.extract! photo, :id, :title, :description, :user_id
+json.photoUrl photo.photo.attached? ? url_for(photo.photo) : nil

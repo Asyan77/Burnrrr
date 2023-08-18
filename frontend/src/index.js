@@ -5,15 +5,12 @@ import configureStore from './store/store';
 import './index.css';
 import App from './App';
 import { restoreSession } from './utils/authUtils';
-import { deleteSession, postSession, postUser } from './utils/sessionApiUtils';
 import { createUser, loginUser, logoutUser } from './store/sessionsReducer';
+import { getAllPhotos } from './store/photosReducer';
 
 let currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
 const csrfToken = sessionStorage.getItem('csrfToken')
 const root = ReactDOM.createRoot(document.getElementById('root'))
-
-
-
 
 const renderApp = () => {
   currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
@@ -22,9 +19,7 @@ const renderApp = () => {
   
   // for testing only
   window.store = store
-  window.postUser = postUser
-  window.postSession = postSession
-  window.deleteSession = deleteSession
+  window.getAllPhotos = getAllPhotos
   window.loginUser = loginUser
   window.logoutUser = logoutUser
   window.createUser = createUser

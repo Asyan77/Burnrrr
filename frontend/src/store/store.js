@@ -9,13 +9,6 @@ const rootReducer = combineReducers({
   photos: photoReducer
 })
 
-// const middleware = [thunk]
-
-// if (process.env.NODE_ENV !== 'production') {
-//   const logger = require('redux-logger')
-//   middleware.push(logger)
-// }
-
 const configureStore = (preloadedState = {}) => (
   legacy_createStore(
     rootReducer, 

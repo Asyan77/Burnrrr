@@ -13,22 +13,22 @@ const setPhotos = (photos) => ({
 
 const deletePhoto = (photo) => ({
     type: DELETE_PHOTO,
-    payload: photo
+    photo
 })
 
 const updatePhoto = (photo) => ({
     type: UPDATE_PHOTO,
-    payload: photo
+    photo
 })
 
 const getPhotoById = (photo) => ({
     type: GET_PHOTO,
-    payload: photo
+    photo
 })
 
 const userPhotos = (photos) => ({
     type: USER_PHOTOS,
-    payload: photos
+    photos
 })
 
 export const getPhotos = (state) => state.photos ? Object.values(state.photos) : null
@@ -101,7 +101,7 @@ const photoReducer = (state = {}, action) => {
         case GET_PHOTO: {
             const newState = { ...state }
             newState.currentPhoto = {}
-            const photo = action.payload
+            const photo = action.photo
             newState.currentPhoto = photo
             return newState
         }
@@ -109,7 +109,7 @@ const photoReducer = (state = {}, action) => {
         case USER_PHOTOS: {
             const newState = { ...state }
             newState.userPhotos = {}
-            const photos = action.payload
+            const photos = action.photo
             newState.userPhotos = photos
             return newState
         }

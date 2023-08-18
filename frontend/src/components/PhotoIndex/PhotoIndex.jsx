@@ -1,7 +1,9 @@
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
+import { useNavigation } from "react-router";
 import { getAllPhotos, getPhotos } from "../../store/photosReducer";
 import { useEffect } from "react";
+import './PhotoIndex.css'
 
 const PhotoIndex = () => {
   
@@ -13,17 +15,28 @@ const PhotoIndex = () => {
   useEffect(() => {
     dispatch(getAllPhotos())
   }, [dispatch]);
+
+  // const handlePhotoImageClick = (e) => {
+  //   navigate(`/photo/${key}`)
+  // }
+
     return (
-      <ul>
-        {photos.map(photo => {
-          return (
-            <li key={photo.id}>
-              <h2>{photo.title}</h2>
-              <img src={photo.photoUrl} alt="" />
-            </li>
-          );
-        })}
-      </ul>
+      <div className="page">
+        <ul className="photoimage-grid"> 
+          {photos.map(photo => {
+            return (
+              // <li key={photo.id}>
+              <div>
+                <h2>{photo.title}</h2> 
+                <img key={photo.id} src={photo.photoUrl} alt="" className="photoimage" />
+                <h2>{photo.description}</h2>
+              </div>
+                // onClick={handlePhotoImageClick}
+              // </li>
+            );
+          })}
+        </ul>
+      </div>
     );
   }
   

@@ -39,7 +39,8 @@ function SignInForm() {
   
   useEffect (()=> {
     if(currentUser) {
-      navigate(`/users/${currentUser.id}`)
+      navigate('/photos')
+      // navigate(`/users/${currentUser.id}`)
     }
   },[currentUser])
 

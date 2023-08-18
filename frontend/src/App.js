@@ -8,6 +8,8 @@ import PhotoIndex from './components/PhotoIndex/PhotoIndex';
 import { loginUser } from './store/sessionsReducer';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
+import SinglePhotoShow from './components/SinglePhotoShow/SinglePhotoShow';
+import You from './components/You/You';
 
 
 function App() {
@@ -47,7 +49,9 @@ function App() {
           <Routes>
             <Route path="/signin" Component={SignInForm}/>
             <Route path="/signup" Component={SignUpForm}/>
-            <Route path='/users/:user_id' exact={true} Component={PhotoIndex}/>
+            <Route path='/photos' exact={true} Component={PhotoIndex}/>
+            {/* <Route path='/photos/users/:user_id' exact={true} Component={You}/> */}
+            {/* <Route path='/photos/:photo_id' exact={true} Component={SinglePhotoShow}/> */}
             
           </Routes>
         </BrowserRouter>

@@ -44,7 +44,8 @@ function SignUpForm() {
   }
   useEffect (()=> {
     if(user) {
-      navigate(`/users/${user.id}`)
+      navigate('/photos')
+      // navigate(`/users/${user.id}`)
     }
   },[user])
 

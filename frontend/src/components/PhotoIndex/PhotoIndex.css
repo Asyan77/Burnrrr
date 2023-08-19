@@ -6,13 +6,14 @@
 .photoimage-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Creates 4 columns with equal width */
-    gap: 5px; 
+    gap: 15px; 
     flex-wrap: wrap;
     padding-left: 11%;
     padding-right: 11%;
     padding-top: 20%;
     /* margin-left: 10px; */
     height: 50%;
+    border: black solid 1px;
     
   }
   

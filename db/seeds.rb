@@ -32,8 +32,8 @@ require 'open-uri'
   photo4 = Photo.create!(title: '747 Boeing - 2018', user_id: zach.id, description: 'Yup... thats a real Boeing 747 turned into a giant art car. So dope!! ')
   photo4.photo.attach(io: URI.open("https://burnr-seeds.s3.us-west-1.amazonaws.com/art+pieces/boring747.png"), filename:'boring747.png')
 
-  photo5 = Photo.create!(title: 'Cupcake & Muffin Art Cars', user_id: zach.id, description: '')
-  photo5.photo.attach(io: URI.open("https://burnr-seeds.s3.us-west-1.amazonaws.com/art+pieces/cupcakes.png"), filename:'Driving a Muffin Car Is Fun')
+  photo5 = Photo.create!(title: 'Cupcake & Muffin Art Cars', user_id: zach.id, description: 'Driving a Muffin Car Is Fun')
+  photo5.photo.attach(io: URI.open("https://burnr-seeds.s3.us-west-1.amazonaws.com/art+pieces/cupcakes.png"), filename:'cupcakes.png')
 
   photo6 = Photo.create!(title: 'Flamingo Bike', user_id: zach.id, description: '')
   photo6.photo.attach(io: URI.open("https://burnr-seeds.s3.us-west-1.amazonaws.com/bikes/bike+-+flamingo.png"), filename:'bike+-+flamingo.png')
@@ -80,7 +80,6 @@ require 'open-uri'
   photo20 = Photo.create!(title: 'Costco', user_id: ben.id, description: 'LOL, who comes up with this stuff???')
   photo20.photo.attach(io: URI.open("https://burnr-seeds.s3.us-west-1.amazonaws.com/camps/costco-camp.png"), filename:'costco-camp.png')
 
-
   photo21 = Photo.create!(title: 'Alien Chess Camp', user_id: riley.id, description: 'Turns out aliens are really good at chess, kinda not surprised...')
   photo21.photo.attach(io: URI.open("https://burnr-seeds.s3.us-west-1.amazonaws.com/camps/alien-chess-camp.png"), filename:'alien-chess-camp.png')
   
@@ -100,7 +99,7 @@ require 'open-uri'
   photo26.photo.attach(io: URI.open("https://burnr-seeds.s3.us-west-1.amazonaws.com/art+pieces/embrace2018.png"), filename:'embrace2018.png')
 
   photo27 = Photo.create!(title: 'Facing the FearBeast 2022', user_id: riley.id, description: 'One of my fav art pieces from this year. Made from tires, the FearBeast represents doubts, insecurites, and negative talk you tell yourself. What you do not see in the photo is a child standing in front of the FearBeast. The beast is saying hurtful words, talking down to him. When community gathers around the child, the child starts to glow which represents the spark of life and the power of love. Inside the FearBeast there is a child inside that starts to glow and the realization that you are your own Fearbeast and how community can impower you.')
-  photo7.photo.attach(io: URI.open("https://burnr-seeds.s3.us-west-1.amazonaws.com/art+pieces/fearbeast2022.png"), filename:'fearbeast2022.png')
+  photo27.photo.attach(io: URI.open("https://burnr-seeds.s3.us-west-1.amazonaws.com/art+pieces/fearbeast2022.png"), filename:'fearbeast2022.png')
 
   photo28 = Photo.create!(title: 'Tea Pots 2016', user_id: riley.id, description: "Have you ever want to cruise around the desert in as a gang of tea pots? Apparently it's been there for two years but I didn't see it until this year... as with all art cars there, you can just climb in any time and enjoy high tea while watching the desert go by out the window...")
   photo28.photo.attach(io: URI.open("https://burnr-seeds.s3.us-west-1.amazonaws.com/art+cars/teapots_2016.png"), filename:'teapots_2016.png')
@@ -109,8 +108,7 @@ require 'open-uri'
   photo29.photo.attach(io: URI.open("https://burnr-seeds.s3.us-west-1.amazonaws.com/the+man/2018-burn+night.png"), filename:'2018-burn+night.png')
 
   photo30 = Photo.create!(title: 'Inside the Temple 2022', user_id: riley.id, description: 'The temple is a very powerful place')
-  photo10.photo.attach(io: URI.open("https://burnr-seeds.s3.us-west-1.amazonaws.com/temple/temple-notes2.png"), filename:'temple-notes2.png')
-
+  photo30.photo.attach(io: URI.open("https://burnr-seeds.s3.us-west-1.amazonaws.com/temple/temple-notes2.png"), filename:'temple-notes2.png')
 
   photo31 = Photo.create!(title: "Dusty Man down 6:00 ", user_id: charles.id, description: '')
   photo31.photo.attach(io: URI.open("https://burnr-seeds.s3.us-west-1.amazonaws.com/the+man/dusty-man.png"), filename:'dusty-man.png')
@@ -141,7 +139,6 @@ require 'open-uri'
 
   photo40 = Photo.create!(title: 'Beautiful note inside the temple', user_id: charles.id, description: '')
   photo40.photo.attach(io: URI.open("https://burnr-seeds.s3.us-west-1.amazonaws.com/temple/temple-note.png"), filename:'temple-note.png')
-
 
 
 # end

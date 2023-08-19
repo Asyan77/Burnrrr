@@ -27,9 +27,9 @@ const PhotoIndex = () => {
             return (
               // <li key={photo.id}>
               <div>
-                <h2>{photo.title}</h2> 
+                {/* <h2>{photo.title}</h2>  */}
                 <img key={photo.id} src={photo.photoUrl} alt="" className="photoimage" />
-                <h2>{photo.description}</h2>
+                {/* <h2>{photo.description}</h2> */}
               </div>
                 // onClick={handlePhotoImageClick}
               // </li>

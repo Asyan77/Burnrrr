@@ -10,7 +10,6 @@ const PhotoIndex = () => {
   const dispatch = useDispatch();
   // const [photos, setPhotos] = useState([]);
   const photos = useSelector(getPhotos)
-  console.log(photos, "akljshdlkgfhqeiur")
 // this is grabbing all 30 photos
   useEffect(() => {
     dispatch(getAllPhotos())
@@ -25,14 +24,11 @@ const PhotoIndex = () => {
         <ul className="photoimage-grid"> 
           {photos.map(photo => {
             return (
-              // <li key={photo.id}>
               <div>
-                {/* <h2>{photo.title}</h2>  */}
-                <img key={photo.id} src={photo.photoUrl} alt="" className="photoimage" />
-                {/* <h2>{photo.description}</h2> */}
+                <a href={`/photo/${photo.id}`}> 
+                  <img key={photo.id} src={photo.photoUrl} alt="" className="photoimage" />
+                </a>
               </div>
-                // onClick={handlePhotoImageClick}
-              // </li>
             );
           })}
         </ul>

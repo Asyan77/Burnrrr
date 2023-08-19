@@ -8,7 +8,7 @@ import PhotoIndex from './components/PhotoIndex/PhotoIndex';
 import { loginUser } from './store/sessionsReducer';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
-import SinglePhotoShow from './components/SinglePhotoShow/SinglePhotoShow';
+import SinglePhotoShow from './components/PhotoPage/PhotoPage';
 import You from './components/You/You';
 
 

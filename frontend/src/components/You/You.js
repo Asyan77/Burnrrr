@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getPhotoByIdTHUNK } from "../../store/photosReducer";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { getAllPhotos, getPhotos} from "../../store/photosReducer";
 import { useNavigate } from 'react-router';
@@ -24,7 +23,7 @@ const You = () => {
             {photos.map(photo => {
               return (
                 <div>
-                   <Link to={`/photos/user/${user.id}/${photo.id}`}>
+                   <Link to={`/user/${user.id}/photos/${photo.id}`}>
                     <img key={photo.id} src={photo.photoUrl} alt="user-photos" className="user-photoimage" />
                   </Link>
                 </div>

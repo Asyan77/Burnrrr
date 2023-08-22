@@ -12,8 +12,8 @@ const setPhotos = (photos) => ({
 
 })
 
-const deletePhoto = (photo) => ({
-    type: DELETE_PHOTO,
+const getPhotoById = (photo) => ({
+    type: GET_PHOTO,
     photo
 })
 
@@ -22,13 +22,12 @@ const updatePhoto = (photo) => ({
     photo
 })
 
-const getPhotoById = (photo) => ({
-    type: GET_PHOTO,
-    photo
-})
-
 const uploadPhoto = (photo) => ({
     type: UPLOAD_PHOTO,
+    photo
+})
+const deletePhoto = (photo) => ({
+    type: DELETE_PHOTO,
     photo
 })
 
@@ -44,6 +43,14 @@ export const getAllPhotos = () => async (dispatch) => {
     }
 }
 
+export const getPhotoByIdTHUNK = (photoId) => async dispatch => {
+    const res = await fetch(`/api/photos/${photoId}`);
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(getPhotoById(data))
+        return data
+    }
+}
 
 export const deletePhotoTHUNK = (id) => async (dispatch) => {
     const res = await fetch(`/api/photos/${id}`, {
@@ -73,14 +80,6 @@ export const editPhotoTHUNK = (payload) => async dispatch => {
     }
 }
 
-export const getPhotoByIdTHUNK = (photoId) => async dispatch => {
-    const res = await fetch(`/api/photos/${photoId}`);
-    if (res.ok) {
-        const data = await res.json()
-        dispatch(getPhotoById(data))
-        return data
-    }
-}
 
 const photoReducer = (state = {}, action) => {
     switch (action.type) {

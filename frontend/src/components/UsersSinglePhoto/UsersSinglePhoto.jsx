@@ -3,14 +3,14 @@ import { useParams } from "react-router"
 import { getPhotoByIdTHUNK } from "../../store/photosReducer";
 import React from 'react'
 import { useEffect } from "react";
-import { getAllComments } from "../../store/commentsReducer";
+import { fetchAllComments } from "../../store/commentsReducer";
 
-const ProfilePhotoPage = () => {
+const UsersSinglePhoto = () => {
     const dispatch = useDispatch
     const { user_Id, photoId } = useParams()
     const currentUser = useSelector(state => state.session.user)
     const currentPhoto = useSelector(state => state.photoReducer.currentPhoto[photoId])
-    // const comments = useSelector(state => state.commentReducer )
+    const comments = useSelector(state => state.comments.comments )
     
     const photo = useSelector(getPhotoByIdTHUNK(photoId))
 
@@ -19,7 +19,7 @@ const ProfilePhotoPage = () => {
     }, [dispatch, photoId])
 
     useEffect(() => {
-        dispatch(getAllComments())
+        dispatch(fetchAllComments())
     }, [dispatch])
 
     return ( // displays current photo at the top half of page along with , bottom half is the title, description and comments 
@@ -27,7 +27,13 @@ const ProfilePhotoPage = () => {
             <div>
                 <img src={photo.photoUrl} alt="" className="single-photo-picture" />
             </div>
-            
+            {comments.map(comment => {
+            return (
+             <ul>
+                <li key={comment.id}>{comment}</li>
+             </ul>
+            );
+          })}
 
         </div>
 
@@ -35,4 +41,4 @@ const ProfilePhotoPage = () => {
     )
 }
 
-export default ProfilePhotoPage
+export default UsersSinglePhoto

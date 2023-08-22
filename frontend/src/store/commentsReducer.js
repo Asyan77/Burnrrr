@@ -1,38 +1,52 @@
-const SET_COMMENTS = 'comment/SET_COMMENTS';
+const GET_COMMENTS = 'comment/GET_COMMENTS';
+const ADD_COMMENT = 'comment/ADD_COMMENT';
 const DELETE_COMMENT = 'comment/DELETE_COMMENT';
-const UPDATE_COMMENT = 'comment/UPDATE_COMMENT';
-const GET_COMMENT = 'comment/GET_COMMENT';
+const EDIT_COMMENT = 'comment/EDIT_COMMENT';
 
-
-
-const setComments = (comments) => ({
-    type: SET_COMMENTS,
+const getComments = (comments) => ({
+    type: GET_COMMENTS,
     comments
 
 })
 
+const addComment = (comment) => ({
+    type: ADD_COMMENT,
+    comment
+
+})
+
+const editComment = (comment) => ({
+    type: EDIT_COMMENT,
+    comment
+})
 const deleteComment = (comment) => ({
     type: DELETE_COMMENT,
     comment
 })
 
-const updateComment = (comment) => ({
-    type: UPDATE_COMMENT,
-    comment
-})
+
+export const getAllComments = (state) => state.comments ? Object.values(state.comments) : null
 
 
-export const getAllComments = () => async (dispatch) => {
+export const fetchAllComments = () => async (dispatch) => {
     const response = await fetch('/api/comments')
     if (response.ok) {
         const data = await response.json()
-        dispatch(setComments(data))
+        dispatch(getComments(data))
         return data
     }
 }
 
+// export const fetchComment = (id) => async (dispatch) => {
+//     const response = await fetch(`/api/comments/${id}`)
+//     if (response.ok) {
+//         const data = await response.json()
+//         dispatch(editComment(data))
+//         return data
+//     }
+// }
 
-export const deleteCommentTHUNK = (id) => async (dispatch) => {
+export const deleteCommentThunk = (id) => async (dispatch) => {
     const res = await fetch(`/api/comments/${id}`, {
         method: "DELETE"
     });
@@ -43,53 +57,46 @@ export const deleteCommentTHUNK = (id) => async (dispatch) => {
     }
 }
 
-export const editCommentTHUNK = (payload) => async dispatch => {
-    const { photoId, authorId, body } = payload
-    const response = await fetch(`/api/comments/${photoId}`, {
+export const editCommentThunk = (payload) => async dispatch => {
+    const { commentId, authorId, body } = payload
+    const response = await fetch(`/api/comments/${commentId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ body, photoId, authorId })
+        body: JSON.stringify({ body, commentId, authorId })
     })
 
     if (response.ok) {
         const data = await response.json()
-        dispatch(updateComment(data))
+        dispatch(editComment(data))
         return data
     }
 }
 
 
-const commentsReducer = (state= {}, action) => {
+const commentsReducer = (state, action) => {
     const currentState = state ? state : {}
 
     switch (action.type) {
-        case SET_COMMENTS: {
+        case GET_COMMENTS: {
             return action.comments
         }
 
-        case GET_COMMENT: {
-            const newState = { ...state }
-           
-            const photo = action.photo
-            newState.currentPhoto = photo
-            return newState
+        case ADD_COMMENT: {          
+            return {...currentState, [action.comment.id]: action.comment }
         }
 
         case DELETE_COMMENT: {
-            const newState = { ...state }
-            delete newState.allPhotos[action.payload];
-            return newState;
+            const newState = { ...currentState}
+            delete newState[action.comment];
+            return currentState;
         }
-        case UPDATE_COMMENT:
+        case EDIT_COMMENT:
+            return {...currentState, [action.payload.id]: action.payload }
 
-            return {
-                ...state,
-                [action.payload.id]: action.payload
-            }
         default:
-            return state;
+            return currentState;
     }
 }
 

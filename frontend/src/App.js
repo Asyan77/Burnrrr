@@ -8,9 +8,10 @@ import PhotoIndex from './components/PhotoIndex/PhotoIndex';
 import { loginUser } from './store/sessionsReducer';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
-import ProfilePhotoPage from './components/ProfilePhotoPage/ProfilePhotoPage';
 import You from './components/You/You';
 import SplashPage from './components/Splash/SplashPage';
+import UsersSinglePhoto from './components/UsersSinglePhoto/UsersSinglePhoto';
+import SinglePhotoShow from './components/SinglePhotoShow/SinglePhotoShow';
 
 
 function App() {
@@ -41,10 +42,12 @@ function App() {
           <Routes>
             <Route path="/signin" Component={SignInForm}/>
             <Route path="/signup" Component={SignUpForm}/>
-            <Route path='/photos' exact={true} Component={PhotoIndex}/>
-            <Route path='/user/:user_id' exact={true} Component={You}/>
-            <Route path='/photos/user/:userId/:photoId' exact={true} Component={ProfilePhotoPage}/>
+            <Route exact path='/photos' Component={PhotoIndex}/>
+            <Route exact path='/photos/:id' Component={SinglePhotoShow}/>
+            <Route exact path='/user/:user_id' Component={You}/>
+            <Route exact path='/user/:userId/photos/:photoId' Component={UsersSinglePhoto}/>
             {/* <Route path="/" Component={SplashPage}/> */}
+          
             
           </Routes>
         </BrowserRouter>

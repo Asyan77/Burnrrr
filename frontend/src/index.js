@@ -23,6 +23,7 @@ const renderApp = () => {
   window.loginUser = loginUser
   window.logoutUser = logoutUser
   window.createUser = createUser
+  window.React1 = require('react');
   //
   root.render (
     <React.StrictMode>

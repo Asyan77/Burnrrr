@@ -3,10 +3,13 @@ import sessionsReducer from './sessionsReducer';
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 import photoReducer from './photosReducer';
+import commentsReducer from './commentsReducer';
 
 const rootReducer = combineReducers({
   session: sessionsReducer,
-  photos: photoReducer
+  photos: photoReducer,
+  comments: commentsReducer
+
 })
 
 const configureStore = (preloadedState = {}) => (

@@ -1,25 +1,38 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserPhotosTHUNK } from "../../store/photosReducer";
-
+import { getPhotoByIdTHUNK } from "../../store/photosReducer";
+import { useParams, useHistory, Link } from "react-router-dom";
+import { getAllPhotos, getPhotos} from "../../store/photosReducer";
+import { useNavigate } from 'react-router';
+import './You.css'
 
 const You = () => {
-    const user = useSelector(state => state.session.currentUser)
-    const userId = user.id
-    const photos = useSelector(getUserPhotosTHUNK(userId))
+  // const history = useHistory();
+  const { userId } = useParams();
+  const photos = useSelector(getPhotos);
+  const user = useSelector(state => state.session.currentUser)
+  const dispatch = useDispatch();
 
-    return (
-       <div>
-        <ul className="photoimage-grid"> 
-          {photos.map(photo => {
-            return (
-                <imgc lassName="photoimage" key={photo.id} src={photo.photoUrl} alt="" />
-            );
-          })}
-        </ul>
-       </div>
-    )
-}
+  useEffect(() => {
+   dispatch(getAllPhotos())
+  }, [dispatch]);
+
+
+      return (
+        <div className="page">
+          <ul className="user-profile-photo-grid"> 
+            {photos.map(photo => {
+              return (
+                <div>
+                   <Link to={`/photos/user/${user.id}/${photo.id}`}>
+                    <img key={photo.id} src={photo.photoUrl} alt="user-photos" className="user-photoimage" />
+                  </Link>
+                </div>
+              );
+            })}
+          </ul>
+        </div>
+      );
+    }
 
 export default You

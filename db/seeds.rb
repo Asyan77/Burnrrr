@@ -5,11 +5,12 @@ require 'open-uri'
     # Album.destroy_all
     User.destroy_all
     Photo.destroy_all
+    Comment.destroy_all
 
     ActiveRecord::Base.connection.reset_pk_sequence!('photos')
     ActiveRecord::Base.connection.reset_pk_sequence!('users')
     # ActiveRecord::Base.connection.reset_pk_sequence!('albums')
-    # ActiveRecord::Base.connection.reset_pk_sequence!('comments')
+    ActiveRecord::Base.connection.reset_pk_sequence!('comments')
 
 
   puts "Creating users..."
@@ -19,7 +20,7 @@ require 'open-uri'
   charles = User.create!(username: 'Salvage', email: 'charles@mail.com', password: 'charlesword')
 
 
-
+  puts "Creating photos..."
   photo1 = Photo.create!(title: 'Angler Fish Art Car', user_id: zach.id, description: '')
   photo1.photo.attach(io: URI.open("https://burnr-seeds.s3.us-west-1.amazonaws.com/art+cars/angler-fish-artcar.png"), filename:'angler-fish-artcar.png')
   
@@ -140,5 +141,18 @@ require 'open-uri'
   photo40 = Photo.create!(title: 'Beautiful note inside the temple', user_id: charles.id, description: '')
   photo40.photo.attach(io: URI.open("https://burnr-seeds.s3.us-west-1.amazonaws.com/temple/temple-note.png"), filename:'temple-note.png')
 
+  puts "Creating comments..."
 
+  comment1 = Comment.create!(author_id: ben.id, photo_id: photo2.id, body: "I hope there's A/C or a fan inside those pastries. Could be a personal sauna or a personal cooler! ")
+  comment2 = Comment.create!(author_id: riley.id, photo_id: photo3.id, body: "I was on this! I took a nap and watched the sunset, was magical.")
+  comment3 = Comment.create!(author_id: charles.id, photo_id: photo5.id, body: "I saw this at my first year at BM, so wild that it's actually made out of real trucks")
+  # comment4 = Comment.create!(author_id: zach.id, photo_id: 10, body: "")
+  # comment5 = Comment.create!(author_id: zach.id, photo_id: 10, body: "")
+  # comment6 = Comment.create!(author_id: zach.id, photo_id: 10, body: "")
+  # comment7 = Comment.create!(author_id: zach.id, photo_id: 10, body: "")
+  # comment8 = Comment.create!(author_id: zach.id, photo_id: 10, body: "")
+  # comment9 = Comment.create!(author_id: zach.id, photo_id: 10, body: "")
+  # comment10 = Comment.create!(author_id: zach.id, photo_id: 10, body: "")
+  # comment11 = Comment.create!(author_id: zach.id, photo_id: 10, body: "")
+  # comment12 = Comment.create!(author_id: zach.id, photo_id: 10, body: "")
 # end

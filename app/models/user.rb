@@ -5,10 +5,17 @@ class User < ApplicationRecord
     before_validation :ensure_session_token
 
     # has_many :photos
-    # dependent: :destroy
+    # dependent :destroy
 
     # has_many: albums
     # dependent: :destroy
+
+    # has_many: comments
+    # dependent: :destroy
+
+     # has_many: likes
+    # dependent: :destroy
+
 
     #has_one_attached :photo
     has_many_attached :photos

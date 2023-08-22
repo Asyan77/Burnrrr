@@ -1,8 +1,9 @@
+const UPLOAD_PHOTO = 'photo/UPLOAD_PHOTOS'
 const SET_PHOTOS = 'photo/SET_PHOTOS';
-const DELETE_PHOTO = 'photo/DELETE_PHOTO';
 const UPDATE_PHOTO = 'photo/UPDATE_PHOTO';
 const GET_PHOTO = 'photo/GET_PHOTO';
 const USER_PHOTOS = 'photo/USER_PHOTOS';
+const DELETE_PHOTO = 'photo/DELETE_PHOTO';
 
 
 const setPhotos = (photos) => ({
@@ -26,12 +27,13 @@ const getPhotoById = (photo) => ({
     photo
 })
 
-const userPhotos = (photos) => ({
-    type: USER_PHOTOS,
-    photos
+const uploadPhoto = (photo) => ({
+    type: UPLOAD_PHOTO,
+    photo
 })
 
 export const getPhotos = (state) => state.photos ? Object.values(state.photos) : null
+export const getUserPhotos = (userId) => (state) => state.photos ? Object.values(state.photos.userId[userId]) : null
 
 export const getAllPhotos = () => async (dispatch) => {
     const response = await fetch('/api/photos')
@@ -41,7 +43,6 @@ export const getAllPhotos = () => async (dispatch) => {
         return data
     }
 }
-
 
 
 export const deletePhotoTHUNK = (id) => async (dispatch) => {
@@ -72,25 +73,14 @@ export const editPhotoTHUNK = (payload) => async dispatch => {
     }
 }
 
-export const getPhotoByIdTHUNK = (imageId) => async dispatch => {
-    const res = await fetch(`/api/photos/${imageId}`);
+export const getPhotoByIdTHUNK = (photoId) => async dispatch => {
+    const res = await fetch(`/api/photos/${photoId}`);
     if (res.ok) {
         const data = await res.json()
         dispatch(getPhotoById(data))
         return data
     }
 }
-
-export const getUserPhotosTHUNK = (userId) => async dispatch => {
-    const res = await fetch(`/api/photos/user/${userId}`)
-    if (res.ok) {
-        const data = await res.json()
-        dispatch(userPhotos(data))
-        return data
-    }
-}
-
-// const initialState = { allPhotos: {}, curr entPhoto: {}, userPhotos: {}};
 
 const photoReducer = (state = {}, action) => {
     switch (action.type) {
@@ -100,18 +90,13 @@ const photoReducer = (state = {}, action) => {
 
         case GET_PHOTO: {
             const newState = { ...state }
-            newState.currentPhoto = {}
             const photo = action.photo
             newState.currentPhoto = photo
             return newState
         }
 
         case USER_PHOTOS: {
-            const newState = { ...state }
-            newState.userPhotos = {}
-            const photos = action.photo
-            newState.userPhotos = photos
-            return newState
+            return action.photos
         }
 
         case DELETE_PHOTO: {

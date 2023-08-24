@@ -8,6 +8,7 @@ import { fetchAllComments } from "../../store/commentsReducer";
 const UsersSinglePhoto = () => {
     const dispatch = useDispatch
     const { user_Id, photoId } = useParams()
+    console.log(useParams())
     const currentUser = useSelector(state => state.session.user)
     const currentPhoto = useSelector(state => state.photoReducer.currentPhoto[photoId])
     const comments = useSelector(state => state.comments.comments )

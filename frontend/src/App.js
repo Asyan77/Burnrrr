@@ -38,7 +38,7 @@ function App() {
     <>
        <BrowserRouter>  
         <NavBar />
-           {/* <PhotoIndex photos={photos}/> */}
+           <PhotoIndex photos={photos}/>
           <Routes>
             <Route path="/signin" Component={SignInForm}/>
             <Route path="/signup" Component={SignUpForm}/>
@@ -46,7 +46,7 @@ function App() {
             <Route exact path='/photos/:id' Component={SinglePhotoShow}/>
             <Route exact path='/user/:user_id' Component={You}/>
             <Route exact path='/user/:userId/photos/:photoId' Component={UsersSinglePhoto}/>
-            {/* <Route path="/" Component={SplashPage}/> */}
+            <Route path="/" Component={SplashPage}/>
           
             
           </Routes>

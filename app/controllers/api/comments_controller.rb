@@ -1,6 +1,7 @@
 class Api::CommentsController < ActionController::API
     def index
       @comments = Comment.all.sort { |a,b| b.created_at <=> a.created_at }
+      debugger
       render :index
     end
     

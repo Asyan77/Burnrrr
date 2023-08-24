@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 
 const SinglePhotoShow =() => {
     const { id } = useParams();
+    console.log(id)
     const dispatch = useDispatch
 
     useEffect(() => {
@@ -16,9 +17,8 @@ const SinglePhotoShow =() => {
     return (
         <>
         <h1>hiiiii</h1>
-        {require('react-dom')}
-        {window.React2 = require('react')}
-          {console.log(window.React1 === window.React2)}
+  
+
         </>
     )
 }

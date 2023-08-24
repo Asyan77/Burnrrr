@@ -2,9 +2,8 @@ import './SignInForm.css'
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../store/sessionsReducer';
-import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
-
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 function SignInForm() {
@@ -12,7 +11,6 @@ function SignInForm() {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.session.currentUser)
-  const navigate = useNavigate();
   let burnrLogoBike = "assets/logos/burnrLogoBike.png"
 
   const handleEmailChange = (event) => {
@@ -37,12 +35,10 @@ function SignInForm() {
     return await dispatch(loginUser({email: demoEmail, password: demoPassword}))
   }
   
-  useEffect (()=> {
     if(currentUser) {
-      navigate('/photos')
-      // navigate(`/users/${currentUser.id}`)
+      return <Redirect to='/photos'/>
+
     }
-  },[currentUser])
 
   return (
     <div className='outerFormBox'>

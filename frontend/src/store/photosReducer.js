@@ -32,10 +32,19 @@ const deletePhoto = (photo) => ({
 })
 
 export const getPhotos = (state) => state.photos ? Object.values(state.photos) : null
+export const getPhoto = (state) => state.photos ? Object.values(state.photos) : null
 export const getUserPhotos = (userId) => (state) => state.photos ? Object.values(state.photos.userId[userId]) : null
 
 export const getAllPhotos = () => async (dispatch) => {
     const response = await fetch('/api/photos')
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(setPhotos(data))
+        return data
+    }
+}
+export const getAllPhotosByUserId = (id) => async (dispatch) => {
+    const response = await fetch(`/api/photos?userId=${id}`)
     if (response.ok) {
         const data = await response.json()
         dispatch(setPhotos(data))
@@ -81,17 +90,16 @@ export const editPhotoTHUNK = (payload) => async dispatch => {
 }
 
 
-const photoReducer = (state = {}, action) => {
+const photoReducer = (state, action) => {
+    const currentState = state ? state : {}
+
     switch (action.type) {
         case SET_PHOTOS: {
             return action.photos
         }
 
         case GET_PHOTO: {
-            const newState = { ...state }
-            const photo = action.photo
-            newState.currentPhoto = photo
-            return newState
+            return {...currentState, [action.photo.id]: action.photo }
         }
 
         case USER_PHOTOS: {
@@ -99,18 +107,18 @@ const photoReducer = (state = {}, action) => {
         }
 
         case DELETE_PHOTO: {
-            const newState = { ...state }
+            const newState = { ...currentState }
             delete newState.allPhotos[action.payload];
             return newState;
         }
         case UPDATE_PHOTO:
 
             return {
-                ...state,
+                ...currentState,
                 [action.payload.id]: action.payload
             }
         default:
-            return state;
+            return currentState;
     }
 }
 

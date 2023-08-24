@@ -17,7 +17,7 @@
 # @photos.each do |userPhoto|
 
 #   json.set! userPhoto.id do
-#     if photo.user_id != @userId
+#     if photo.user_id != 4
 #       next
 #     end
 #     json.partial! 'photo', photo: userPhoto

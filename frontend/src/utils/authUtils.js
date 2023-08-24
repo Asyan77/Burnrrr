@@ -1,9 +1,11 @@
 export const restoreSession = async () => {
+  // console.log('wookring??')
     try {
       const res = await fetch('/api/session')
       const token = res.headers.get('X-CSRF-Token')
       if (res.ok) {
         const data = await res.json()
+        console.log('data', data)
         sessionStorage.setItem('currentUser', JSON.stringify(data.user))
         sessionStorage.setItem('csrfToken', token)
       } else {

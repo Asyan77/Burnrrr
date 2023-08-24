@@ -1,6 +1,6 @@
 import './SignUpForm.css'
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector} from 'react-redux';
 import { loginUser, createUser } from '../../store/sessionsReducer';
 
@@ -12,7 +12,7 @@ function SignUpForm() {
   const [password, setPassword] = useState('');
   const userData = [playaName, email, password]
   const user = useSelector(state => state.session.currentUser);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   let burnrLogoBike = "assets/logos/burnrLogoBike.png"
 
   const handlePlayaNameChange = (event) => {
@@ -44,7 +44,7 @@ function SignUpForm() {
   }
   useEffect (()=> {
     if(user) {
-      navigate('/photos')
+      // navigate('/photos')
       // navigate(`/users/${user.id}`)
     }
   },[user])

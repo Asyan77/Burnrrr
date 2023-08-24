@@ -1,6 +1,48 @@
 .page {
     background-color: white;
 }
+.you-profile-header{
+    width: 100vw;
+    height: 25vh;
+    background-color: green;
+    display: flex;
+    justify-content: flex-start;
+    align-items: end;
+}
+
+.username {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    padding-left: 10%;
+    padding-bottom: 5%;
+    color: aliceblue;
+}
+
+.profile-header-mini-links {
+    display:flex;
+    justify-content: space-between;
+    color: aliceblue;
+    /* background-color: blue; */
+    width: 140vh;
+    padding-bottom: 3%;
+}
+
+.left-mini-links {
+    display: flex;
+    justify-content: space-between;
+    color: aliceblue;
+    /* background-color: pink; */
+    width: 20%;
+}
+
+.right-mini-links {
+    display: flex;
+    justify-content: space-between;
+    color: aliceblue;
+    /* background-color: pink; */
+    width: 20%;
+
+}
 
 
 .user-profile-photo-grid {

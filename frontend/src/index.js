@@ -13,8 +13,8 @@ const csrfToken = sessionStorage.getItem('csrfToken')
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 const renderApp = () => {
-  currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
   let initialState = {session: {currentUser}}
+  console.log(initialState)
   const store = configureStore(initialState)
   
   // for testing only
@@ -23,8 +23,7 @@ const renderApp = () => {
   window.loginUser = loginUser
   window.logoutUser = logoutUser
   window.createUser = createUser
-  window.React1 = require('react');
-  //
+  
   root.render (
     <React.StrictMode>
        <Provider store={store}> 

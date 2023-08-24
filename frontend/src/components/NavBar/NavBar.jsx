@@ -14,7 +14,7 @@ let uploadIcon = "assets/logos/upload-icon-64.png"
 function NavBar() {
   const currentUser = useSelector(state => state.session.currentUser);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   let loggedInButtons;
 
   const handleLogOut = async () => {
@@ -24,7 +24,7 @@ function NavBar() {
 
   useEffect (()=> {
     if(!currentUser) {
-      navigate(`/`)
+      // navigate(`/`)
     }
   },[currentUser])
 

@@ -44,7 +44,7 @@ export const logoutUser = userId => dispatch => (
 // SELECTORS
 
 // REDUCER
-const sessionReducer = (state = { currentUser: null }, action) => {
+const sessionReducer = (state = { currentUser: null}, action) => {
   const nextState = { ...state }
 
   switch(action.type) {

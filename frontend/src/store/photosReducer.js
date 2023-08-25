@@ -32,7 +32,7 @@ const deletePhoto = (photo) => ({
 })
 
 export const getPhotos = (state) => state.photos ? Object.values(state.photos) : null
-export const getPhoto = (state) => state.photos ? Object.values(state.photos) : null
+export const getPhoto = (id) => (state) => state.photos[id]
 export const getUserPhotos = (userId) => (state) => state.photos ? Object.values(state.photos.userId[userId]) : null
 
 export const getAllPhotos = () => async (dispatch) => {

@@ -1,11 +1,10 @@
 import React from 'react';
 import './NavBar.css'
-import { Link, useNavigate, NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../store/sessionsReducer';
-import You from '../You/You';
 import UserIconButton from '../UserIconButton/UserIconButton';
 
 let burnrLogo = "assets/logos/burnrLogo.png"
@@ -14,19 +13,17 @@ let uploadIcon = "assets/logos/upload-icon-64.png"
 function NavBar() {
   const currentUser = useSelector(state => state.session.currentUser);
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
   let loggedInButtons;
 
   const handleLogOut = async () => {
     await dispatch(logoutUser(currentUser.id))
   }
 
-
-  useEffect (()=> {
-    if(!currentUser) {
-      // navigate(`/`)
-    }
-  },[currentUser])
+  // useEffect (()=> {
+  //   if(!currentUser) {
+  //     // navigate(`/`)
+  //   }
+  // },[currentUser])
 
   if (currentUser) {
     loggedInButtons = (
@@ -58,7 +55,6 @@ function NavBar() {
             </div> 
 
             <div className='you-btn'> 
-              {/* <You user={currentUser} /> */}
               <NavLink to={`/user/${currentUser.id}`} className='left-side-links-navbar'>You</NavLink>
             </div> 
 

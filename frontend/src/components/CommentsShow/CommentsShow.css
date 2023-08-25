@@ -1,0 +1,42 @@
+.comment-box-container {
+    font-size: 30px;
+    border: black solid 1px;
+    width: 45%;
+    height: 60%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 40%;
+}
+
+h1 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 3vh;
+}
+
+.comment-box {
+    width: 60%;
+    height: 50vh;
+    display: flex;
+    align-items: flex-start;
+    font-size: 30px;
+    margin-top: 10px;
+    border: black solid 3px;
+}
+
+
+.comment-btn {
+    width: 25%;
+    height: 5vh;
+    color: white;
+    background-color: rgb(32, 73, 218);
+    border-radius: 3%;
+    font-size: 30px;
+    font-family: sans-serif;
+    margin-top: 30px;
+}

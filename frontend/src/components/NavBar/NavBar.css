@@ -18,7 +18,7 @@
   }
   
   .logo-navbar {
-    width: 120px;
+    width: 11vw;
   }
 /*   
   .nav-bar-left {
@@ -99,13 +99,15 @@
     text-decoration:none;
     color: white;
     font-weight: 100;
+    font-size: 2vh;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    padding-left: 50px;
+    padding-left: 20%;
   }
   .signup-btn {
     text-decoration:none;
     color: rgb(3, 3, 3);
     font-weight: 100;
+    font-size: 2vh;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     background-color: #f8f8f8;
     border-radius: 3px;
@@ -114,6 +116,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* padding-right: 3%; */
+    margin-right: 4%;
   }
   
   /* Responsive styles for smaller screens */
